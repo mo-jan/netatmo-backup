@@ -1,11 +1,9 @@
 # netatmo-backup
 
-![run updater](https://github.com/mo-jan/netatmo-python-client/workflows/run%20updater/badge.svg)
-
 
 ## What is it
 
-- Download sensor data from Netatmo Smart Home Weather Station using Github Workflow.
+- Download sensor data from Netatmo Smart Home Weather Station using Github Workflow
 - Big thanks to rene-d's [netatmo](https://github.com/rene-d/netatmo) library
 
 
@@ -20,12 +18,7 @@
 
 ## Github workflow
 
-- The workflow is setup through `.github/workflows/run_updater.yml`. 
-- Add environment secrets to github secrets, using the same names as in `.env`. 
+- The workflow is setup through `.github/workflows/run_updater.yml` 
+- Add environment secrets to github secrets, using the same names as in `.env` 
 - No need then to use the `.env` file. 
 - It will run the script and download new sensor data every week
-
-
-## Links
-
-- https://dev.netatmo.com
