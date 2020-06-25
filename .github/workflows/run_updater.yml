@@ -1,0 +1,36 @@
+
+name: run updater
+on:
+  push:
+  schedule:
+    - cron: 0 20 * * SUN # 0 20 * * *  # 1 1/2 * * * # See https://crontab.guru/#0_8_*_*_*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.8' 
+      - name: Install requirements
+        run: pip install -r requirements.txt 
+      - name: Download data and update csv files
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          DEFAULT_STATION: ${{ secrets.DEFAULT_STATION }}
+        run: python main.py
+      - name: Commit changes
+        run: |
+          git config --local user.name github-actions
+          git config --local user.email "action@github.com"
+          git add .
+          git commit -m "downloaded this week's data" -a
+          git push origin master
+        env:
+          REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+          username: github-actions
