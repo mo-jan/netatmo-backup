@@ -1,2 +1,2 @@
 # netatmo-backup
-Download sensor data from Netatmo Smart Home Weather Station
+Download and backup sensor data from Netatmo Smart Home Weather Station using Github Workflow.
