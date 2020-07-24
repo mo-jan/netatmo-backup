@@ -19,6 +19,5 @@
 ## Github workflow
 
 - The workflow is setup through `.github/workflows/run_updater.yml` 
-- Add environment secrets to github secrets, using the same names as in `.env` 
-- No need then to use the `.env` file. 
-- It will run the script and download new sensor data every week
+- Add environment secrets to github secrets, using the same names as in `.env`. This way the `.env` file is obsolete.
+- The script will download new sensor data every week, and store the data within the repository. 
